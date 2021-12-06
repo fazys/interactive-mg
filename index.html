@@ -1,0 +1,108 @@
+<!-- https://interactive-image.readthedocs.io/en/latest/advanced-features/trigger-event.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./inc/interactive-image.min.js"></script>
+
+    <link href="./inc/interactive-image.min.css" rel="stylesheet">
+    <style>
+    body{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    .interactive-image {
+        background:url('./demo.jpg');
+        background-repeat: no-repeat;
+        height: 100vh;
+    }
+    .cstm-styling{
+            background-color: none;
+    box-shadow: none !important;
+    }
+    .cstm-styling .text-item span{display: none !important;} 
+
+.blob {
+    background: black;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    height: 20px;
+    width: 20px;
+    transform: scale(1);
+    animation: pulse-black 2s infinite;
+}
+
+@keyframes pulse-black {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+    }
+    
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+    }
+    
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+}
+
+</style>
+</head>
+<body>
+        <div class="interactive-image">
+        </div>
+</body>
+
+
+<script>
+    var notes = [
+    {
+      type: "text",
+      title: "Text title",
+      description: "",
+      picturePath: "demo.jpg",
+      customClassName: "cstm-styling pulsetrigger",
+      position: {
+        left: 100,
+        top: 50
+      },
+      link: {
+        url: "https://www.jqueryscript.net",
+        label: "Read More"
+      }
+    },
+    {
+      type: "picture",
+      path: "demo.jpg",
+      caption: "",
+      sticky: true,
+      customClassName: "fezz-class",
+      position: {
+        left: 400,
+        top: 200
+      },
+      link: {
+        url: "https://www.jqueryscript.net",
+        label: "Link Label"
+      }
+    }
+];
+
+$('.interactive-image').interactiveImage(notes, options);
+
+
+
+var options = {
+    shareBox: false,
+    triggerEvent: 'hover',
+
+};
+
+</script>
+</html>
